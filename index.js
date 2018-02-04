@@ -21,6 +21,10 @@ express()
 			console.log(price);
 			if (price.length > 1) {
 				var  resultado = price[0].replace(/(US\$|\s*|,)/g, '');
+				var  resultado = price[0].replace(/(-|\s*|,)/g, '');
+
+				console.log("precio " + resultado);
+
 				resultado = resultado.replace(/\$/g, '');
 				resultado = Math.ceil(resultado);
 				res.json({precio: resultado, disponible: true});
