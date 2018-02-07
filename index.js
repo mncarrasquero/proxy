@@ -17,9 +17,11 @@ express()
 				price = $('font  b').text(); 
 			}
 			var price = price.split("$");
-			price.shift();			
+			price.shift();
+			
+
 			console.log(price);
-			//if (price.length > 1) {
+			if (price.length > 0) {
 				var  resultado = price[0].replace(/(US\$|\s*|,)/g, '');
 				var  resultado = price[0].replace(/(-|\s*|,)/g, '');
 
@@ -28,10 +30,10 @@ express()
 				resultado = resultado.replace(/\$/g, '');
 				resultado = Math.ceil(resultado);
 				res.json({precio: resultado, disponible: true});
-			// }else{
-			// 	res.json({precio: resultado, disponible: true});
-			// 	//res.json({precio: null, disponible: false});
-			// }
+			}else{
+				//res.json({precio: resultado, disponible: true});
+				res.json({precio: null, disponible: false});
+			}
 		}else{
 			console.log("ERROR AL PROCESRAR EL ITEM "+ req.params.asin);
 		}
