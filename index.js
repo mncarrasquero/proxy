@@ -16,8 +16,25 @@ express()
 			if (price == null) {
 				price = $('font  b').text(); 
 			}
-			var price = price.split("$");
-			price.shift();
+
+			console.log(price);
+
+			//verifico si el precio es un rango de precio se selecciona el mayor 
+			var rango = price.split("-");
+			console.log('es un rango de '+ rango.length);
+			
+			if (rango.length > 1) {
+				console.log(rango);
+				price = rango[1].split("$");
+				price.shift();
+
+			}else{
+				price = price.split("$");
+				price.shift();
+			}
+
+			
+			
 			
 
 			console.log(price);
